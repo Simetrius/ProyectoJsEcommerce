@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARG and Roll - Compras de Rock!!</title>
+
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@700&display=swap" rel="stylesheet">
+
+    <!--Box iconos-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <!--Navegacion-->
+    <nav class="nav">
+      <div class="nav__center container">
+        <div class="nav__logo">
+					<h1>ARG AND ROLL! <span>Rock!</span></h1>
+				</div>
+				<ul class="nav__list">
+          <li class ="li__sobreNosotros">Inicio</li>
+          <li class ="li__sobreNosotros">Sobre nosotros!!</li>
+					<span>
+						<i class="bx bxs-music" ></i>
+					</span>
+					<div class="carrito__icon">
+						<i class="bx bx-cart"></i>
+						<span class="item__total">0</span>
+					</div>
+				</ul>
+      </div>
+    </nav>
+
+    <!--Filtrar-->
+    <section class="filter">
+      <div class="grid">
+        
+        <div class="category">
+          <h4>Filtrado por Clase</h4>
+          <select id="category">
+            <option value="productos">Todos los Productos</option>
+            <option value="discos">Discos</option>
+            <option value="remeras">Remeras</option>
+            <option value="accesorios">Accesorios</option>
+          </select>
+        </div>
+        
+        <div class="category">
+          <h4>Filtrado por Banda</h4>
+          <select id="category2">
+            <option value="productos">Todos los Productos</option>
+            <option value="rataBlanca">Rata Blanca</option>
+            <option value="divididos">Divididos</option>
+            <option value="memphis">Memphis</option>
+            <option value="laRenga">La Renga</option>
+            <option value="losPericos">Los Pericos</option>
+            <option value="losRedondos">PR y sus Redonditos</option>
+            <option value="losPiojos">Los Piojos</option>
+            <option value="pappo">Pappo - Riff</option>
+          </select>
+        </div>
+
+      </div>
+    </section>
+
+    <!--Productos-->
+    <div id="productos" class="containerFlex"></div>
+
+    <!--Carrito-->
+    <script src="./index.js"></script>
+  </body>
+</html>
