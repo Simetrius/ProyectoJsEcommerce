@@ -102,12 +102,29 @@ const accesoriosRock = [accesorio1, accesorio2, accesorio3, accesorio4, accesori
 //Array productosEnCarrito
 let productosEnCarrito = []
 
+//Ingreso la discografia al localStorage
 if(localStorage.getItem("discografia")){
 	discografia = JSON.parse(localStorage.getItem("discografia"))
 	console.log(discografia)
 }else{
-	//Dejo el else en blanco ya que no se va a permitir cargar al usuario diferentes productos
-	""
+	localStorage.setItem("discografia", JSON.stringify(discografia))
+}
+
+//Ingreso remerasRock al localStorage
+if(localStorage.getItem("remerasRock")){
+	discografia = JSON.parse(localStorage.getItem("remerasRock"))
+	console.log(remerasRock)
+}else{
+	localStorage.setItem("remerasRock", JSON.stringify(remerasRock))
+}
+
+
+//Ingreso accesoriosRock al localStorage
+if(localStorage.getItem("accesoriosRock")){
+	discografia = JSON.parse(localStorage.getItem("accesoriosRock"))
+	console.log(accesoriosRock)
+}else{
+	localStorage.setItem("accesoriosRock", JSON.stringify(accesoriosRock))
 }
 
 //Iniciar Array Carrito
@@ -119,8 +136,8 @@ if(localStorage.getItem("carrito")){
 
 //Plantillas
 //Creo las 3 plantillas mediante funciones, para reducir la cantidad de código en el HTML
-
 let divProductos = document.getElementById("productos")
+
 
 function mostrarCatalogo(){
     
@@ -169,7 +186,7 @@ function mostrarCatalogo(){
 	  </section>`
         divProductos.appendChild(nuevoProducto)
 
-		//Agrego evento para los botones de añadir al carrito
+		//Agrego evento para los botones de añadir al carrito, capturandolo por clases
 		
 		let btnAñadirCarrito = document.getElementsByClassName(`btn${disco.id}`)
 		for(let discoBoton of btnAñadirCarrito){
