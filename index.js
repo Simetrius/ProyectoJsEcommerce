@@ -32,6 +32,13 @@ class Accesorios{
 	}
 }
 
+//DOM
+let botonCarrito = document.getElementById("botonCarrito")
+let modalBody = document.getElementById("modal-body")
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+let parrafoCompra = document.getElementById('precioTotal')
+let acumulador
+
 
 //Objetos
 let catalogo = []
@@ -59,7 +66,7 @@ catalogo.push(disco9)
 let catalogo2 = []
 const remera1 = new Remeras(10, "Remera - La Aplanadora del Rock", "Divididos","imagenes/remeraDivididos.jpg", "Hard Rock", 5000)
 catalogo.push(remera1);
-const remera2 = new Remeras(11, "Remera - Detonadr de Sueños", "La Renga","imagenes/remeraLaRenga.jpg", "Hard Rock", 4500)
+const remera2 = new Remeras(11, "Remera - Detonador de Sueños", "La Renga","imagenes/remeraLaRenga.jpg", "Hard Rock", 4500)
 catalogo.push(remera2);
 const remera3 = new Remeras(12, "Remera - Los Pericos", "Los Pericos","imagenes/remeraLosPericos.jpg", "Reggae", 4000)
 catalogo.push(remera3);
@@ -102,30 +109,6 @@ const accesoriosRock = [accesorio1, accesorio2, accesorio3, accesorio4, accesori
 //Array productosEnCarrito
 let productosEnCarrito = []
 
-//Ingreso la discografia al localStorage
-if(localStorage.getItem("discografia")){
-	discografia = JSON.parse(localStorage.getItem("discografia"))
-	console.log(discografia)
-}else{
-	localStorage.setItem("discografia", JSON.stringify(discografia))
-}
-
-//Ingreso remerasRock al localStorage
-if(localStorage.getItem("remerasRock")){
-	discografia = JSON.parse(localStorage.getItem("remerasRock"))
-	console.log(remerasRock)
-}else{
-	localStorage.setItem("remerasRock", JSON.stringify(remerasRock))
-}
-
-
-//Ingreso accesoriosRock al localStorage
-if(localStorage.getItem("accesoriosRock")){
-	discografia = JSON.parse(localStorage.getItem("accesoriosRock"))
-	console.log(accesoriosRock)
-}else{
-	localStorage.setItem("accesoriosRock", JSON.stringify(accesoriosRock))
-}
 
 //Iniciar Array Carrito
 if(localStorage.getItem("carrito")){
@@ -200,11 +183,17 @@ function mostrarCatalogo(){
 			console.log(productosEnCarrito)
 			//Cargar en el Storage
 			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+			//Agrego Sweet Alert al boton
+			swal({
+				title: "Producto Agregado al Carrito",
+				text: `Usted a agregado "${disco.titulo}"`,
+				icon: "success",
+				button: "Ok"
+			})
 		}
     })
 }
-//Invoco
-mostrarCatalogo()
 
 
 //2da funcion
@@ -267,11 +256,17 @@ function mostrarCatalogo2(){
 			console.log(productosEnCarrito)
 			//Cargar en el Storage
 			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+			//Agrego Sweet Alert al boton
+			swal({
+				title: "Producto Agregado al Carrito",
+				text: `Usted a agregado "${remera.titulo}"`,
+				icon: "success",
+				button: "Ok"
+			})
 		}
 	})
 }
-//invoco
-mostrarCatalogo2()
 
 
 //3ra funcion
@@ -332,8 +327,33 @@ function mostrarCatalogo3(){
 			console.log(productosEnCarrito)
 			//Cargar en el Storage
 			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+			//Agrego Sweet Alert al boton
+			swal({
+				title: "Producto Agregado al Carrito",
+				text: `Usted a agregado "${accesorios.titulo}"`,
+				icon: "success",
+				button: "Ok"
+			})
 		}
 	})
 }
-//invoco
-mostrarCatalogo3()
+
+//Select dinamico
+
+function selectClase(){
+	let selectClase = document.getElementById("category").value
+	if(selectClase === "productos"){
+		mostrarCatalogo()
+		mostrarCatalogo2()
+		mostrarCatalogo3()
+	}else if(selectClase === "discos"){
+		mostrarCatalogo()
+	}else if (selectClase === "remeras"){
+		mostrarCatalogo2()
+	}else if (selectClase === "accesorios"){
+		mostrarCatalogo3()
+	}else ""
+}
+
+selectClase()
