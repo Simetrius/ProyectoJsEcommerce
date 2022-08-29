@@ -1,0 +1,74 @@
+[
+    {
+        "id": 10,
+        "titulo": "Remera - La Aplanadora del Rock",
+        "banda": "Divididos",
+        "imagen": "imagenes/remeraDivididos.jpg",
+        "genero": "Hard Rock",
+        "precio": 5000
+    },
+    {
+        "id": 11,
+        "titulo": "Remera - Detonador de Sueños",
+        "banda": "La Renga",
+        "imagen": "imagenes/remeraLaRenga.jpg",
+        "genero": "Hard Rock",
+        "precio": 4500
+    },
+    {
+        "id": 12,
+        "titulo": "Remera - Los Pericos",
+        "banda": "Los Pericos",
+        "imagen": "imagenes/remeraLosPericos.jpg",
+        "genero": "Reggae",
+        "precio": 4000
+    },
+    {
+        "id": 13,
+        "titulo": "Remera - Los Piojos Azul",
+        "banda": "Los Piojos",
+        "imagen": "imagenes/remeraLosPiojos.jpg",
+        "genero": "Rock",
+        "precio": 5500
+    },
+    {
+        "id": 14,
+        "titulo": "Remera - AY AY AY",
+        "banda": "Los Piojos",
+        "imagen": "imagenes/remeraLosPiojos2.jpg",
+        "genero": "Rock",
+        "precio": 4800
+    },
+    {
+        "id": 15,
+        "titulo": "Remera - Los Redondos",
+        "banda": "PR y sus Redonditos de Ricota",
+        "imagen": "imagenes/remeraLosRedondos.jpg",
+        "genero": "Rock",
+        "precio": 5500
+    },
+    {
+        "id": 16,
+        "titulo": "Remera - Oktubre",
+        "banda": "PR y sus Redonditos de Ricota",
+        "imagen": "imagenes/remeraLosRedondos2.jpg",
+        "genero": "Rock",
+        "precio": 6000
+    },
+    {
+        "id": 17,
+        "titulo": "Remera - Pappo Blues",
+        "banda": "Pappo",
+        "imagen": "imagenes/remeraPappo.jpg",
+        "genero": "Rock",
+        "precio": 7500
+    },
+    {
+        "id": 18,
+        "titulo": "Remera - El Reino Olvidado",
+        "banda": "Rata Blanca",
+        "imagen": "imagenes/remeraRataBlanca.jpg",
+        "genero": "Metal Clasico",
+        "precio": 5000
+    }
+]

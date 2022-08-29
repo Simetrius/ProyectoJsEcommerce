@@ -1,0 +1,32 @@
+[
+    {
+        "id": 19,
+        "titulo": "Bandanas - *colores varios*",
+        "imagen": "imagenes/bandanas.jpg",
+        "precio": 1000
+    },
+    {
+        "id": 20,
+        "titulo": "Puas x10 uni.",
+        "imagen": "imagenes/puas.jpg",
+        "precio": 1500
+    },
+    {
+        "id": 21,
+        "titulo": "Pulseras Punk",
+        "imagen": "imagenes/pulseras.jpg",
+        "precio": 2500
+    },
+    {
+        "id": 22,
+        "titulo": "Cables de Guitarra - Ernie Ball - 3mts",
+        "imagen": "imagenes/cables.jpg",
+        "precio": 4500
+    },
+    {
+        "id": 23,
+        "titulo": "Cuerdas de Guitarra - Fender 09",
+        "imagen": "imagenes/cuerdas.jpg",
+        "precio": 3800
+    }
+]

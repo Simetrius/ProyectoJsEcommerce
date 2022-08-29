@@ -1,0 +1,86 @@
+[
+    {   
+        "const": "disco1",
+        "id": 1,
+        "titulo": "Magos espadas y rosas",
+        "interprete": "Rata Blanca",
+        "año": 1992,
+        "imagen": "imagenes/magosEspadasYRosas.jpg",
+        "genero": "Metal Clásico",
+        "precio": 3000
+    },
+    {   
+        "id": 2,
+        "titulo": "La era de la boludez",
+        "interprete": "Divididos",
+        "año": 1993,
+        "imagen": "imagenes/laEraDeLaBoludez.jpg",
+        "genero": "Hard Rock",
+        "precio": 2500
+    },
+    {
+        "id": 3,
+        "titulo": "Cosa de hombres",
+        "interprete": "Memphis la Blusera",
+        "año": 1996,
+        "imagen": "imagenes/cosaDeHombres.jpg",
+        "genero": "Blues",
+        "precio": 4000
+    },
+    {
+        "id": 4,
+        "titulo": "Detonador de sueños",
+        "interprete": "La Renga",
+        "año": 2003,
+        "imagen": "imagenes/detonadorDeSueños.jpg",
+        "genero": "Hard Rock",
+        "precio": 3500
+    },
+    {
+        "id": 5,
+        "titulo": "El Reino Olvidado",
+        "interprete": "Rata Blanca",
+        "año": 2009,
+        "imagen": "imagenes/elReinoOlvidado.jpg",
+        "genero": "Metal Clásico",
+        "precio": 2800
+    },
+    {
+        "id": 6,
+        "titulo": "Desde Cero",
+        "interprete": "Los Pericos",
+        "año": 2002,
+        "imagen": "imagenes/desdeCero.jpg",
+        "genero": "Reggae",
+        "precio": 2500
+    },
+    {
+        "id": 7,
+        "titulo": "Oktubre",
+        "interprete": "PR y sus Redonditos de Ricota",
+        "año": 1986,
+        "imagen": "imagenes/oktubre.jpg",
+        "genero": "Rock",
+        "precio": 8000
+    },
+    {
+        "id": 8,
+        "titulo": "Civilización",
+        "interprete": "Los Piojos",
+        "año": 2007,
+        "imagen": "imagenes/civilizacion.jpg",
+        "genero": "Rock",
+        "precio": 4500
+    },
+    {
+        "id": 9,
+        "titulo": "Que sea Rock",
+        "interprete": "Riff",
+        "año": 1997,
+        "imagen": "imagenes/queSeaRock.jpg",
+        "genero": "Hard Rock",
+        "precio": 5000
+    }
+]
+
+
