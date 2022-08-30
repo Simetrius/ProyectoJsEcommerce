@@ -49,6 +49,7 @@ fetch("discos.json")
 		discografia.push(nuevoProducto)
 	}
 	console.log(discografia)
+	mostrarCatalogo()
 })
 
 let remerasRock = [];
@@ -60,6 +61,7 @@ fetch("remeras.json")
 		remerasRock.push(nuevoProducto)
 	}
 	console.log(remerasRock)
+	mostrarCatalogo2()
 })
 
 let accesoriosRock = [];
@@ -67,10 +69,11 @@ fetch("accesorios.json")
 .then(response => response.json())
 .then(data =>{
 	for(let accesorios of data){
-		let nuevoProducto = new Discos(accesorios.id, accesorios.titulo, accesorios.imagen, accesorios.precio)
+		let nuevoProducto = new Accesorios(accesorios.id, accesorios.titulo, accesorios.imagen, accesorios.precio)
 		accesoriosRock.push(nuevoProducto)
 	}
 	console.log(accesoriosRock)
+	mostrarCatalogo3()
 })
 // const disco1 = new Discos(1, "Magos espadas y rosas", "Rata Blanca", 1992,"imagenes/magosEspadasYRosas.jpg", "Metal Clásico", 3000)
 // catalogo.push(disco1);
@@ -225,7 +228,6 @@ function mostrarCatalogo(){
 			})
 }
 
-mostrarCatalogo()
 //2da funcion
 function mostrarCatalogo2(){
 	
@@ -298,8 +300,6 @@ function mostrarCatalogo2(){
 	})
 }
 
-mostrarCatalogo2()
-
 //3ra funcion
 function mostrarCatalogo3(){
 	
@@ -370,4 +370,4 @@ function mostrarCatalogo3(){
 	})
 }
 
-mostrarCatalogo3()
+
