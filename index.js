@@ -109,72 +109,73 @@ function mostrarCatalogo(){
 	discografia.forEach((disco)=>{
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
-		<div class="productos__center">
-		<div class="producto">
-		<div class="image__container">
-		<img src=${disco.imagen} alt="discos de rock">
-		</div>
+										<div class="productos__center">
+											<div class="producto">
+												<div class="image__container">
+													<img src=${disco.imagen} alt="discos de rock">
+												</div>
 		
-		<div class="producto__footer">
-		<h1>Discos Originales</h1>
-		<div class="rating">
-				<span>
-				  <i class="bx bxs-star"></i>
-				  </span>
-				  <span>
-				  <i class="bx bxs-star"></i>
-				  </span>
-				  <span>
-				  <i class="bx bxs-star"></i>
-				  </span>
-				  <span>
-				  <i class="bx bxs-star"></i>
-				</span>
-				<span>
-				<i class="bx bx-star"></i>
-				</span>
-				</div>
-				<p class="tituloCard">${disco.titulo}</p>
-				<p class="interpreteCard">${disco.interprete}</p>
-				<p class="generoCard">${disco.genero}</p>
-				<p class="añoCard">Año ${disco.año}</p>
+												<div class="producto__footer">
+													<h1>Discos Originales</h1>
+													<div class="rating">
+														<span>
+				  											<i class="bx bxs-star"></i>
+				  										</span>
+				  										<span>
+				  											<i class="bx bxs-star"></i>
+				  										</span>
+				  										<span>
+				  											<i class="bx bxs-star"></i>
+				  										</span>
+				  										<span>
+				  											<i class="bx bxs-star"></i>
+														</span>
+														<span>
+															<i class="bx bx-star"></i>
+														</span>
+													</div>
+
+													<p class="tituloCard">${disco.titulo}</p>
+													<p class="interpreteCard">${disco.interprete}</p>
+													<p class="generoCard">${disco.genero}</p>
+													<p class="añoCard">Año ${disco.año}</p>
 				
-				<div class="price">$ * ${disco.precio}</div>
-				</div>
-				<div class="bottom">
-				<div class="btn__group">
-				<a href="#"  class = "btn${disco.id} btn" >Añadir carrito</a>
-				</div>
-				</div>
-				</div>
-				</div>
-				</section>`
-				divProductos.appendChild(nuevoProducto)
+													<div class="price">$ * ${disco.precio}</div>
+												</div>
+												<div class="bottom">
+													<div class="btn__group">
+														<a href="#"  class = "btn${disco.id} btn" >Añadir carrito</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>`
+		divProductos.appendChild(nuevoProducto)
 				
-				//Agrego evento para los botones de añadir al carrito, capturandolo por clases
+		//Agrego evento para los botones de añadir al carrito, capturandolo por clases
 				
-				let btnAñadirCarrito = document.getElementsByClassName(`btn${disco.id}`)
-				for(let discoBoton of btnAñadirCarrito){
-					discoBoton.addEventListener("click", ()=>{agregarAlCarrito(disco)})
-				}
+		let btnAñadirCarrito = document.getElementsByClassName(`btn${disco.id}`)
+		for(let discoBoton of btnAñadirCarrito){
+			discoBoton.addEventListener("click", ()=>{agregarAlCarrito(disco)})
+		}
 				
-				//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
-				function agregarAlCarrito(disco){
-					console.log(`El disco ${disco.titulo} del interprete ${disco.interprete} ha sido agregado al carrito`)
-					productosEnCarrito.push(disco)
-					console.log(productosEnCarrito)
-					//Cargar en el Storage
-					localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+		//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
+		function agregarAlCarrito(disco){
+			console.log(`El disco ${disco.titulo} del interprete ${disco.interprete} ha sido agregado al carrito`)
+			productosEnCarrito.push(disco)
+			console.log(productosEnCarrito)
+			//Cargar en el Storage
+			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
 					
-					//Agrego Sweet Alert al boton
-					swal({
-						title: "Producto Agregado al Carrito",
-						text: `Usted a agregado "${disco.titulo}"`,
-						icon: "success",
-						button: "Ok"
-					})
-				}
+			//Agrego Sweet Alert al boton
+			swal({
+				title: "Producto Agregado al Carrito",
+				text: `Usted a agregado "${disco.titulo}"`,
+				icon: "success",
+				button: "Ok"
 			})
+		}
+	})
 }
 
 //2da funcion
@@ -183,47 +184,48 @@ function mostrarCatalogo2(){
 	remerasRock.forEach((remera)=>{
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
-		<div class="productos__center">
-		<div class="producto">
-		<div class="image__container">
-		<img src=${remera.imagen} alt="remeras de rock">
-		</div>
+										<div class="productos__center">
+											<div class="producto">
+												<div class="image__container">
+													<img src=${remera.imagen} alt="remeras de rock">
+												</div>
 		
-		<div class="producto__footer">
-		<h1>Remeras Originales</h1>
-		<div class="rating">
-		<span>
-		<i class="bx bxs-star"></i>
-		</span>
-		<span>
-		<i class="bx bxs-star"></i>
-		</span>
-		<span>
-		<i class="bx bxs-star"></i>
-		</span>
-		<span>
-				  <i class="bx bxs-star"></i>
-				</span>
-				<span>
-				<i class="bx bx-star"></i>
-				</span>
-				</div>
-				<p class="tituloCard">${remera.titulo}</p>
-				<p class="bandaCard">${remera.banda}</p>
-				<p class="generoCard">${remera.genero}</p>
-				<div class="price">$ * ${remera.precio}</div>
-			</div>
-			<div class="bottom">
-			<div class="btn__group">
-			<a href="#" class="btn${remera.id} btn">Añadir carrito</a>
-			</div>
-			</div>
-			</div>
-			</div>
-			</section>`
-			divProductos.appendChild(nuevoProducto)
+												<div class="producto__footer">
+													<h1>Remeras Originales</h1>
+													<div class="rating">
+														<span>
+															<i class="bx bxs-star"></i>
+														</span>
+														<span>
+															<i class="bx bxs-star"></i>
+														</span>
+														<span>
+															<i class="bx bxs-star"></i>
+														</span>
+														<span>
+				  											<i class="bx bxs-star"></i>
+														</span>
+														<span>
+															<i class="bx bx-star"></i>
+														</span>
+													</div>
+
+													<p class="tituloCard">${remera.titulo}</p>
+													<p class="bandaCard">${remera.banda}</p>
+													<p class="generoCard">${remera.genero}</p>
+													<div class="price">$ * ${remera.precio}</div>
+												</div>
+												<div class="bottom">
+													<div class="btn__group">
+														<a href="#" class="btn${remera.id} btn">Añadir carrito</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>`
+		divProductos.appendChild(nuevoProducto)
 			
-			//Agrego evento para los botones de añadir al carrito
+		//Agrego evento para los botones de añadir al carrito
 			
 		let btnAñadirCarrito = document.getElementsByClassName(`btn${remera.id}`)
 		for(let remeraBoton of btnAñadirCarrito){
@@ -255,54 +257,55 @@ function mostrarCatalogo3(){
 	accesoriosRock.forEach((accesorios)=>{
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
-		<div class="productos__center">
-		<div class="producto">
-		<div class="image__container">
-		<img src=${accesorios.imagen} alt="accesorios de rock">
-		</div>
+										<div class="productos__center">
+											<div class="producto">
+												<div class="image__container">
+													<img src=${accesorios.imagen} alt="accesorios de rock">
+												</div>
 		
-		<div class="producto__footer">
-		<h1>Accesorios Originales</h1>
-		<div class="rating">
-		<span>
-		<i class="bx bxs-star"></i>
-		</span>
-		<span>
-		<i class="bx bxs-star"></i>
-		</span>
-		<span>
-				  <i class="bx bxs-star"></i>
-				  </span>
-				  <span>
-				  <i class="bx bxs-star"></i>
-				  </span>
-				  <span>
-				  <i class="bx bx-star"></i>
-				  </span>
-				  </div>
-			  <p class="tituloCard">${accesorios.titulo}</p>
-			  <div class="price">$ * ${accesorios.precio}</div>
-			  </div>
-			  <div class="bottom">
-			  <div class="btn__group">
-			  <a href="#" class="btn${accesorios.id} btn">Añadir carrito</a>
-			  </div>
-			  </div>
-			  </div>
-			  </div>
-			  </section>`
-			  divProductos.appendChild(nuevoProducto)
+												<div class="producto__footer">
+													<h1>Accesorios Originales</h1>
+													<div class="rating">
+														<span>
+															<i class="bx bxs-star"></i>
+														</span>
+														<span>
+															<i class="bx bxs-star"></i>
+														</span>
+														<span>
+				  											<i class="bx bxs-star"></i>
+				  										</span>
+				  										<span>
+				  											<i class="bx bxs-star"></i>
+				  										</span>
+				  										<span>
+				  											<i class="bx bx-star"></i>
+				  										</span>
+				  									</div>
+
+			  										<p class="tituloCard">${accesorios.titulo}</p>
+			  										<div class="price">$ * ${accesorios.precio}</div>
+			  									</div>
+			  									<div class="bottom">
+			  										<div class="btn__group">
+			  											<a href="#" class="btn${accesorios.id} btn">Añadir carrito</a>
+			  										</div>
+			  									</div>
+			  								</div>
+			  							</div>
+									</section>`
+		divProductos.appendChild(nuevoProducto)
 			  
-			  //Agrego evento para los botones de añadir al carrito
+		//Agrego evento para los botones de añadir al carrito
 			  
-			  let btnAñadirCarrito = document.getElementsByClassName(`btn${accesorios.id}`)
-			  for(let accesoriosBoton of btnAñadirCarrito){
-				  accesoriosBoton.addEventListener("click", ()=>{agregarAlCarrito(accesorios)})
-				}
+		let btnAñadirCarrito = document.getElementsByClassName(`btn${accesorios.id}`)
+		for(let accesoriosBoton of btnAñadirCarrito){
+			accesoriosBoton.addEventListener("click", ()=>{agregarAlCarrito(accesorios)})
+		}
 				
-				//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
-				function agregarAlCarrito(accesorios){
-					console.log(`El Producto ${accesorios.titulo} ha sido agregado al carrito`)
+		//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
+		function agregarAlCarrito(accesorios){
+			console.log(`El Producto ${accesorios.titulo} ha sido agregado al carrito`)
 			productosEnCarrito.push(accesorios)
 			console.log(productosEnCarrito)
 			//Cargar en el Storage
