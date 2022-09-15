@@ -39,106 +39,55 @@ let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 let parrafoCompra = document.getElementById('precioTotal')
 let acumulador
 
-//Objetos
+//Objetos discografia, remerasRock y accesoriosRock
+//Llamada asincrónica 1
 let discografia = [];
-fetch("discos.json")
-.then(response => response.json())
-.then(data =>{
+
+const cargarDiscografia = async () =>{
+	const response = await fetch ("discos.json")
+	const data = await response.json()
 	for(let disco of data){
 		let nuevoProducto = new Discos(disco.id, disco.titulo, disco.interprete, disco.año, disco.imagen, disco.genero, disco.precio)
 		discografia.push(nuevoProducto)
 	}
 	console.log(discografia)
 	mostrarCatalogo()
-})
+}
+cargarDiscografia()
 
+
+
+//LLamada asincronica 2
 let remerasRock = [];
-fetch("remeras.json")
-.then(response => response.json())
-.then(data =>{
+
+const cargarRemerasRock = async () =>{
+	const response = await fetch ("remeras.json")
+	const data = await response.json()
 	for(let remera of data){
 		let nuevoProducto = new Remeras(remera.id, remera.titulo, remera.banda, remera.imagen, remera.genero, remera.precio)
 		remerasRock.push(nuevoProducto)
 	}
 	console.log(remerasRock)
 	mostrarCatalogo2()
-})
+}
+cargarRemerasRock()
 
+
+
+//Llamada asincronica 3
 let accesoriosRock = [];
-fetch("accesorios.json")
-.then(response => response.json())
-.then(data =>{
+
+const cargarAccesoriosRock = async () =>{
+	const response = await fetch ("accesorios.json")
+	const data = await response.json()
 	for(let accesorios of data){
 		let nuevoProducto = new Accesorios(accesorios.id, accesorios.titulo, accesorios.imagen, accesorios.precio)
 		accesoriosRock.push(nuevoProducto)
 	}
 	console.log(accesoriosRock)
 	mostrarCatalogo3()
-})
-// const disco1 = new Discos(1, "Magos espadas y rosas", "Rata Blanca", 1992,"imagenes/magosEspadasYRosas.jpg", "Metal Clásico", 3000)
-// catalogo.push(disco1);
-// const disco2 = new Discos(2, "La era de la boludez", "Divididos", 1993,"imagenes/laEraDeLaBoludez.jpg", "Hard Rock", 2500)
-// catalogo.push(disco2);
-// const disco3 = new Discos(3, "Cosa de hombres", "Memphis la Blusera", 1996,"imagenes/cosaDeHombres.jpg", "Blues", 4000)
-// catalogo.push(disco3);
-// const disco4 = new Discos(4, "Detonador de sueños", "La Renga", 2003,"imagenes/detonadorDeSueños.jpg", "Hard Rock", 3500)
-// catalogo.push(disco4);
-// const disco5 = new Discos(5, "El Reino Olvidado", "Rata Blanca", 2009,"imagenes/elReinoOlvidado.jpg", "Metal Clásico", 2800)
-// catalogo.push(disco5);
-// const disco6 = new Discos(6,"Desde Cero", "Los Pericos", 2002,"imagenes/desdeCero.jpg", "Reggae", 2500 )
-// catalogo.push(disco6);
-// const disco7 = new Discos(7,"Oktubre", "PR y sus Redonditos de Ricota", 1986, "imagenes/oktubre.jpg", "Rock", 8000)
-// catalogo.push(disco7);
-// const disco8 = new Discos(8, "Civilización", "Los Piojos", 2007,"imagenes/civilizacion.jpg", "Rock", 4500)
-// catalogo.push (disco8);
-// const disco9 = new Discos(9,"Que sea Rock", "Riff", 1997,"imagenes/queSeaRock.jpg", "Hard Rock", 5000)
-// catalogo.push(disco9)
-
-
-//Objetos 2
-// let catalogo2 = []
-// const remera1 = new Remeras(10, "Remera - La Aplanadora del Rock", "Divididos","imagenes/remeraDivididos.jpg", "Hard Rock", 5000)
-// catalogo.push(remera1);
-// const remera2 = new Remeras(11, "Remera - Detonador de Sueños", "La Renga","imagenes/remeraLaRenga.jpg", "Hard Rock", 4500)
-// catalogo.push(remera2);
-// const remera3 = new Remeras(12, "Remera - Los Pericos", "Los Pericos","imagenes/remeraLosPericos.jpg", "Reggae", 4000)
-// catalogo.push(remera3);
-// const remera4 = new Remeras(13, "Remera - Los Piojos Azul", "Los Piojos","imagenes/remeraLosPiojos.jpg", "Rock", 5500)
-// catalogo.push(remera4);
-// const remera5 = new Remeras(14, "Remera - AY AY AY", "Los Piojos","imagenes/remeraLosPiojos2.jpg", "Rock", 4800)
-// catalogo.push(remera5);
-// const remera6 = new Remeras(15,"Remera - Los Redondos", "PR y sus Redonditos de Ricota","imagenes/remeraLosRedondos.jpg", "Rock", 5500 )
-// catalogo.push(remera6);
-// const remera7 = new Remeras(16,"Remera - Oktubre", "PR y sus Redonditos de Ricota", "imagenes/remeraLosRedondos2.jpg", "Rock", 6000)
-// catalogo.push(remera7);
-// const remera8 = new Remeras(17, "Remera - Pappo Blues", "Pappo","imagenes/remeraPappo.jpg", "Rock", 7500)
-// catalogo.push (remera8);
-// const remera9 = new Remeras(18,"Remera - El Reino Olvidado", "Rata Blanca","imagenes/remeraRataBlanca.jpg", "Metal Clasico", 5000)
-// catalogo.push(remera9) 
-
-
-//Objetos 3
-// let catalogo3 = []
-// const accesorio1 = new Accesorios(19, "Bandanas - *colores varios*","imagenes/bandanas.jpg", 1000)
-// catalogo.push(accesorio1);
-// const accesorio2 = new Accesorios(20,"Puas x10 uni.","imagenes/puas.jpg", 1500)
-// catalogo.push(accesorio2);
-// const accesorio3 = new Accesorios(21, "Pulseras Punk","imagenes/pulseras.jpg", 2500)
-// catalogo.push(accesorio3);
-// const accesorio4 = new Accesorios(22, "Cables de Guitarra - Ernie Ball - 3mts","imagenes/cables.jpg", 4500)
-// catalogo.push(accesorio4);
-// const accesorio5 = new Accesorios(23,"Cuerdas de Guitarra - Fender 09","imagenes/cuerdas.jpg",  3800)
-// catalogo.push(accesorio5);
-
-
-//Arrays de objetos
-//Declaro los 3 arrays
-//  const discografia = [disco1, disco2, disco3, disco4, disco5, disco6, disco7, disco8, disco9]
-
-// const remerasRock = [remera1, remera2, remera3, remera4, remera5, remera6, remera7, remera8, remera9]
-
-// const accesoriosRock = [accesorio1, accesorio2, accesorio3, accesorio4, accesorio5]
-
+}
+cargarAccesoriosRock()
 //Array productosEnCarrito
 let productosEnCarrito = []
 
