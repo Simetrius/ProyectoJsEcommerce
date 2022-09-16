@@ -168,19 +168,29 @@ function mostrarCatalogo(){
 		//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
 		function agregarAlCarrito(disco){
 			console.log(`El disco ${disco.titulo} del interprete ${disco.interprete} ha sido agregado al carrito`)
-			productosEnCarrito.push(disco)
-			console.log(productosEnCarrito)
-			//Cargar en el Storage
-			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-					
-			//Agrego Sweet Alert al boton
-			swal({
-				title: "Producto Agregado al Carrito",
-				text: `Usted a agregado "${disco.titulo}"`,
-				icon: "success",
-				button: "Ok"
-			})
+
+			let productoAgregado = productosEnCarrito.find((elem) => (elem.id == disco.id))
+			if (productoAgregado == undefined){
+				productosEnCarrito.push(disco)
+				//Cargar en el Storage
+				localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+				//Agrego Sweet Alert al boton
+				swal({
+					title: "Producto Agregado al Carrito",
+					text: `Usted a agregado "${disco.titulo}"`,
+					icon: "success",
+					button: "Ok"
+				})
+			}else{
+				swal({
+					title: "El Producto ya se encuentra en el carrito",
+					text: `${disco.titulo} ya se encuentra en el carrito`,
+					icon: "warning",
+				})
+			}
 		}
+		
 	})
 }
 
@@ -241,18 +251,27 @@ function mostrarCatalogo2(){
 		//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
 		function agregarAlCarrito(remera){
 			console.log(`El producto ${remera.titulo} de la banda ${remera.banda} ha sido agregado al carrito`)
-			productosEnCarrito.push(remera)
-			console.log(productosEnCarrito)
-			//Cargar en el Storage
-			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-			
-			//Agrego Sweet Alert al boton
-			swal({
-				title: "Producto Agregado al Carrito",
-				text: `Usted a agregado "${remera.titulo}"`,
-				icon: "success",
-				button: "Ok"
-			})
+
+			let productoAgregado = productosEnCarrito.find((elem) => (elem.id == remera.id))
+			if (productoAgregado == undefined){
+				productosEnCarrito.push(remera)
+				//Cargar en el Storage
+				localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+				//Agrego Sweet Alert al boton
+				swal({
+					title: "Producto Agregado al Carrito",
+					text: `Usted a agregado "${remera.titulo}"`,
+					icon: "success",
+					button: "Ok"
+				})
+			}else{
+				swal({
+					title: "El Producto ya se encuentra en el carrito",
+					text: `${remera.titulo} ya se encuentra en el carrito`,
+					icon: "warning",
+				})
+			}
 		}
 	})
 }
@@ -312,26 +331,31 @@ function mostrarCatalogo3(){
 		//utilizo la funcion local dentro de cada una de las funciones diferentes de mostrar catalogo
 		function agregarAlCarrito(accesorios){
 			console.log(`El Producto ${accesorios.titulo} ha sido agregado al carrito`)
-			productosEnCarrito.push(accesorios)
-			console.log(productosEnCarrito)
-			//Cargar en el Storage
-			localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-			
-			//Agrego Sweet Alert al boton
-			swal({
-				title: "Producto Agregado al Carrito",
-				text: `Usted a agregado "${accesorios.titulo}"`,
-				icon: "success",
-				button: "Ok"
-			})
+
+			let productoAgregado = productosEnCarrito.find((elem) => (elem.id == accesorios.id))
+			if (productoAgregado == undefined){
+				productosEnCarrito.push(accesorios)
+				//Cargar en el Storage
+				localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
+				//Agrego Sweet Alert al boton
+				swal({
+					title: "Producto Agregado al Carrito",
+					text: `Usted a agregado "${accesorios.titulo}"`,
+					icon: "success",
+					button: "Ok"
+				})
+			}else{
+				swal({
+					title: "El Producto ya se encuentra en el carrito",
+					text: `${accesorios.titulo} ya se encuentra en el carrito`,
+					icon: "warning",
+				})
+			}
 		}
 	})
 }
 
-//Evento botonCarrito
-botonCarrito.addEventListener('click', () => {
-	cargarProductosCarrito(productosEnCarrito)
-})
 
 function cargarProductosCarrito(productosDelStorage) {
 
@@ -345,27 +369,48 @@ function cargarProductosCarrito(productosDelStorage) {
                         <h4 class="card-title">${productosEnCarrito.titulo}</h4>
                     
                         <p class="card-text">$${productosEnCarrito.precio}</p> 
-                        <button onclick="eliminarCarrito(${productosEnCarrito.id})" class= "btn btn-danger" id="botonEliminar">Eliminar<i class="fas fa-trash-alt"></i></button>
+                        <button class= "btn btn-danger" id="botonEliminar${productosEnCarrito.id}">Eliminar<i class="fas fa-trash-alt"></i></button>
                 </div>    
             
             
             </div>`
     
 	})
+
+	productosDelStorage.forEach((productoCarrito, indice)=>{
+	//capturamos el boton por una id variable dependiendo de cual sea el producto
+	document.getElementById(`botonEliminar${productoCarrito.id}`).addEventListener('click', () => {
+		
+		//Dentro del evento:
+		console.log(`Producto ${productoCarrito.titulo} eliminado`)
+		Toastify({
+			text: `Producto *${productoCarrito.titulo}* ELIMINADO`,
+		}).showToast();
+
+		//Eliminamos del DOM
+		let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
+		cardProducto.remove()
+
+		//Eliminamos del array compras
+		productosEnCarrito.splice(indice, 1)
+		localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+		cargarProductosCarrito(productosEnCarrito)
+	})  
+
+})
 //Function del total
 //productosEnCarritos
 compraTotal(productosDelStorage)
-
 }
 
 function compraTotal(productosTotal) {
     acumulador = 0;
     //recorrer productosTotal
-    productosTotal.forEach((productoCarrito)=>{
-        acumulador += productoCarrito.precio 
+    productosTotal.forEach((productosEnCarrito)=>{
+        acumulador += productosEnCarrito.precio 
     })
-    console.log(acumulador)
-    //if acumularo = 0 o !=
+
+    //if acumulador = 0 o !=
     if(acumulador == 0){
         parrafoCompra.innerHTML = `<p>No hay productos en el carrito</p>`
     }else{
@@ -373,11 +418,38 @@ function compraTotal(productosTotal) {
     }
 }
 
-const eliminarCarrito = (productosEnCarritoId) =>{
 
-	const item = productosEnCarrito.find((productosEnCarrito)=> productosEnCarrito === productosEnCarritoId)
-	const indice = productosEnCarrito.indexOf(item)
-	productosEnCarrito.splice(indice, 1)
+function finalizarCompra(){
+    //Borramos todos los elementos del array una vez finalizada la compra, y agrego una notificación con Sweet alert en caso de tener o no productos en el carrito
+    productosEnCarrito = []
+    localStorage.removeItem('carrito')
 
-	cargarProductosCarrito()
+    //Mostramos total
+    console.log(`El total de su compra es ${acumulador}`)
+	if(acumulador == 0){
+		swal({
+				title: "NO POSEE PRODUCTOS EN EL CARRITO!!!",
+				text: `Revise nuestro catálogo de compras, para agregar productos al carrito`,
+				icon: "warning",
+				button: "Ok"
+		})
+	}else{
+		swal({
+			title: "GRACIAS POR SU COMPRA!!!",
+			text: `El total de su compra es de $"${acumulador}"`,
+			icon: "success",
+			button: "Ok"
+	})
+	}
+
+//Volvemos a cargar el modal con el array vacío por lo que quedará sin nada
+cargarProductosCarrito(productosEnCarrito)
+
 }
+//Eventos botonCarrito
+botonCarrito.addEventListener('click', () => {
+	cargarProductosCarrito(productosEnCarrito)
+})
+botonFinalizarCompra.addEventListener('click',()=>{
+    finalizarCompra()
+})
