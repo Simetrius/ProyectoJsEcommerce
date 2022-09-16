@@ -38,6 +38,8 @@ let modalBody = document.getElementById("modal-body")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 let parrafoCompra = document.getElementById('precioTotal')
 let acumulador
+let divProductos = document.getElementById("productos")
+let botonEliminar = document.getElementById("botonEliminar")
 
 //Objetos discografia, remerasRock y accesoriosRock
 //Llamada asincrónica 1
@@ -50,6 +52,7 @@ const cargarDiscografia = async () =>{
 		let nuevoProducto = new Discos(disco.id, disco.titulo, disco.interprete, disco.año, disco.imagen, disco.genero, disco.precio)
 		discografia.push(nuevoProducto)
 	}
+	//Uso console.log para que figure todo el catálogo por consola
 	console.log(discografia)
 	mostrarCatalogo()
 }
@@ -67,6 +70,7 @@ const cargarRemerasRock = async () =>{
 		let nuevoProducto = new Remeras(remera.id, remera.titulo, remera.banda, remera.imagen, remera.genero, remera.precio)
 		remerasRock.push(nuevoProducto)
 	}
+	//Uso console.log para que figure todo el catálogo por consola
 	console.log(remerasRock)
 	mostrarCatalogo2()
 }
@@ -84,10 +88,13 @@ const cargarAccesoriosRock = async () =>{
 		let nuevoProducto = new Accesorios(accesorios.id, accesorios.titulo, accesorios.imagen, accesorios.precio)
 		accesoriosRock.push(nuevoProducto)
 	}
+	//Uso console.log para que figure todo el catálogo por consola
 	console.log(accesoriosRock)
 	mostrarCatalogo3()
 }
 cargarAccesoriosRock()
+
+
 //Array productosEnCarrito
 let productosEnCarrito = []
 
@@ -101,7 +108,6 @@ if(localStorage.getItem("carrito")){
 
 //Plantillas
 //Creo las 3 plantillas mediante funciones, para reducir la cantidad de código en el HTML
-let divProductos = document.getElementById("productos")
 
 
 function mostrarCatalogo(){
@@ -322,4 +328,56 @@ function mostrarCatalogo3(){
 	})
 }
 
+//Evento botonCarrito
+botonCarrito.addEventListener('click', () => {
+	cargarProductosCarrito(productosEnCarrito)
+})
 
+function cargarProductosCarrito(productosDelStorage) {
+
+    modalBody.innerHTML = " "  
+    productosDelStorage.forEach((productosEnCarrito) => {
+        
+        modalBody.innerHTML += `
+            <div class="card border-primary mb-3" id ="productoCarrito${productosEnCarrito.id}" style="max-width: 300px;">
+                <img class="card-img-top" src="${productosEnCarrito.imagen}" alt="${productosEnCarrito.titulo}">
+                <div class="card-body">
+                        <h4 class="card-title">${productosEnCarrito.titulo}</h4>
+                    
+                        <p class="card-text">$${productosEnCarrito.precio}</p> 
+                        <button onclick="eliminarCarrito(${productosEnCarrito.id})" class= "btn btn-danger" id="botonEliminar">Eliminar<i class="fas fa-trash-alt"></i></button>
+                </div>    
+            
+            
+            </div>`
+    
+	})
+//Function del total
+//productosEnCarritos
+compraTotal(productosDelStorage)
+
+}
+
+function compraTotal(productosTotal) {
+    acumulador = 0;
+    //recorrer productosTotal
+    productosTotal.forEach((productoCarrito)=>{
+        acumulador += productoCarrito.precio 
+    })
+    console.log(acumulador)
+    //if acumularo = 0 o !=
+    if(acumulador == 0){
+        parrafoCompra.innerHTML = `<p>No hay productos en el carrito</p>`
+    }else{
+        parrafoCompra.innerHTML = `Importe de su compra total = $ ${acumulador}`
+    }
+}
+
+const eliminarCarrito = (productosEnCarritoId) =>{
+
+	const item = productosEnCarrito.find((productosEnCarrito)=> productosEnCarrito === productosEnCarritoId)
+	const indice = productosEnCarrito.indexOf(item)
+	productosEnCarrito.splice(indice, 1)
+
+	cargarProductosCarrito()
+}
