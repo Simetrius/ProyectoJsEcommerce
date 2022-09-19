@@ -1,10 +1,10 @@
 //Declaración de clases
 //Declaro 3 diferentes, para 3 arrays de objetos diferentes, para posteriormente poder filtrar.
 class Discos{
-    constructor (id, titulo, interprete, año, imagen, genero, precio){
+    constructor (id, titulo, banda, año, imagen, genero, precio){
         this.id = id,
         this.titulo = titulo,
-        this.interprete = interprete,
+        this.banda = banda,
         this.año = año,
         this.imagen = imagen,
         this.genero = genero,
@@ -49,7 +49,7 @@ const cargarDiscografia = async () =>{
 	const response = await fetch ("discos.json")
 	const data = await response.json()
 	for(let disco of data){
-		let nuevoProducto = new Discos(disco.id, disco.titulo, disco.interprete, disco.año, disco.imagen, disco.genero, disco.precio)
+		let nuevoProducto = new Discos(disco.id, disco.titulo, disco.banda, disco.año, disco.imagen, disco.genero, disco.precio)
 		discografia.push(nuevoProducto)
 	}
 	//Uso console.log para que figure todo el catálogo por consola
@@ -116,7 +116,7 @@ function mostrarCatalogo(){
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
 										<div class="productos__center">
-											<div class="producto">
+											<div class="producto" category ="discos">
 												<div class="image__container">
 													<img src=${disco.imagen} alt="discos de rock">
 												</div>
@@ -142,7 +142,7 @@ function mostrarCatalogo(){
 													</div>
 
 													<p class="tituloCard">${disco.titulo}</p>
-													<p class="interpreteCard">${disco.interprete}</p>
+													<p class="interpreteCard">${disco.banda}</p>
 													<p class="generoCard">${disco.genero}</p>
 													<p class="añoCard">Año ${disco.año}</p>
 				
@@ -201,7 +201,7 @@ function mostrarCatalogo2(){
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
 										<div class="productos__center">
-											<div class="producto">
+											<div class="producto" category ="remeras">
 												<div class="image__container">
 													<img src=${remera.imagen} alt="remeras de rock">
 												</div>
@@ -283,7 +283,7 @@ function mostrarCatalogo3(){
 		let nuevoProducto = document.createElement("div")
         nuevoProducto.innerHTML =  `<section class="productos">
 										<div class="productos__center">
-											<div class="producto">
+											<div class="producto" category ="accesorios">
 												<div class="image__container">
 													<img src=${accesorios.imagen} alt="accesorios de rock">
 												</div>

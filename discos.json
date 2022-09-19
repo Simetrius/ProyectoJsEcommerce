@@ -3,7 +3,7 @@
         "const": "disco1",
         "id": 1,
         "titulo": "Magos espadas y rosas",
-        "interprete": "Rata Blanca",
+        "banda": "Rata Blanca",
         "año": 1992,
         "imagen": "imagenes/magosEspadasYRosas.jpg",
         "genero": "Metal Clásico",
@@ -12,7 +12,7 @@
     {   
         "id": 2,
         "titulo": "La era de la boludez",
-        "interprete": "Divididos",
+        "banda": "Divididos",
         "año": 1993,
         "imagen": "imagenes/laEraDeLaBoludez.jpg",
         "genero": "Hard Rock",
@@ -21,7 +21,7 @@
     {
         "id": 3,
         "titulo": "Cosa de hombres",
-        "interprete": "Memphis la Blusera",
+        "banda": "Memphis la Blusera",
         "año": 1996,
         "imagen": "imagenes/cosaDeHombres.jpg",
         "genero": "Blues",
@@ -30,7 +30,7 @@
     {
         "id": 4,
         "titulo": "Detonador de sueños",
-        "interprete": "La Renga",
+        "banda": "La Renga",
         "año": 2003,
         "imagen": "imagenes/detonadorDeSueños.jpg",
         "genero": "Hard Rock",
@@ -39,7 +39,7 @@
     {
         "id": 5,
         "titulo": "El Reino Olvidado",
-        "interprete": "Rata Blanca",
+        "banda": "Rata Blanca",
         "año": 2009,
         "imagen": "imagenes/elReinoOlvidado.jpg",
         "genero": "Metal Clásico",
@@ -48,7 +48,7 @@
     {
         "id": 6,
         "titulo": "Desde Cero",
-        "interprete": "Los Pericos",
+        "banda": "Los Pericos",
         "año": 2002,
         "imagen": "imagenes/desdeCero.jpg",
         "genero": "Reggae",
@@ -57,7 +57,7 @@
     {
         "id": 7,
         "titulo": "Oktubre",
-        "interprete": "PR y sus Redonditos de Ricota",
+        "banda": "PR y sus Redonditos de Ricota",
         "año": 1986,
         "imagen": "imagenes/oktubre.jpg",
         "genero": "Rock",
@@ -66,7 +66,7 @@
     {
         "id": 8,
         "titulo": "Civilización",
-        "interprete": "Los Piojos",
+        "banda": "Los Piojos",
         "año": 2007,
         "imagen": "imagenes/civilizacion.jpg",
         "genero": "Rock",
@@ -75,7 +75,7 @@
     {
         "id": 9,
         "titulo": "Que sea Rock",
-        "interprete": "Riff",
+        "banda": "Riff",
         "año": 1997,
         "imagen": "imagenes/queSeaRock.jpg",
         "genero": "Hard Rock",
